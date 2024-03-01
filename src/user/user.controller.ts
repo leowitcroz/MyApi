@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 
@@ -18,12 +18,8 @@ export class UserController {
     }
 
     @Get(':id')
-    async readOne(@Param() param) {
-
-        return {
-            user: [],
-            param
-        }
+    async readOne(@Param('id', ParseIntPipe) id) {
+        return this.userService.readOne(id)
 
     }
 
