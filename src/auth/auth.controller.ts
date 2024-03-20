@@ -18,9 +18,9 @@ export class AuthController {
 
 
     @Post('register')
-    async register(@Body() { email, name, password }: AuthRegisterDto) {
+    async register(@Body() { email, name, password, role }: AuthRegisterDto) {
 
-        return this.authService.register({ email, name, password });
+        return this.authService.register({ email, name, password, role });
     }
 
     @Post('forget')

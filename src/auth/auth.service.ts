@@ -96,8 +96,8 @@ export class AuthService {
         return this.createToken(user)
     }
 
-    async register({ email, name, password }) {
-        const user = await this.userService.create({ email, name, password })
+    async register({ email, name, password, role }) {
+        const user = await this.userService.create({ email, name, password, role })
 
         return this.createToken(user);
     }
