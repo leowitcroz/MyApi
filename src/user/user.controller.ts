@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put } 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { PatchUserDto } from './dto/patch-user.dto';
+import { Role } from 'src/enums/role.enum';
+import { Roles } from 'src/decorators/enum.decorator';
 
 @Controller('users')
 export class UserController {
@@ -13,6 +15,7 @@ export class UserController {
         return this.userService.create({ email, name, password })
     }
 
+    @Roles(Role.Admin)
     @Get()
     async read() {
         return this.userService.read()
