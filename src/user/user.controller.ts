@@ -16,10 +16,9 @@ export class UserController {
 
     @Post()
     async create(@Body() { email, name, password, role }: CreateUserDto) {
-        return this.userService.create({ email, name, password, role })
+        return await this.userService.create({ email, name, password, role })
     }
 
-    
     @Get()
     async read() {
         return this.userService.read()
